@@ -13,6 +13,54 @@ class PlayerMove(Enum):
     Y = 2
     Z = 3
 
+def result(my_move, their_move):
+    # Translate the move
+    if my_move == 'X':
+        my_move = 'ROCK'
+    elif my_move == 'Y':
+        my_move = 'PAPER'
+    elif my_move == 'Z':
+        my_move = 'SCISSORS'
+    else:
+        print(f"ILLEGAL MOVE, your move can't be {my_move}.")
+
+    # Translate the move
+    if their_move == 'A':
+        their_move = 'ROCK'
+    elif their_move == 'B':
+        their_move = 'PAPER'
+    elif their_move == 'C':
+        their_move = 'SCISSORS'
+    else:
+        print(f"ILLEGAL MOVE, your move can't be {their_move}.")
+    
+    score = dict()
+    score['WIN'] = 6
+    score['DRAW'] = 3
+    score['LOSS'] = 0
+
+    # Analyse the move and declare result
+    print(f"Analysing move: My Move = {my_move} vs Thier Move = {their_move}")
+    if my_move == their_move:
+        result = 'DRAW'
+    elif my_move == 'ROCK':
+        if their_move == 'SCISSORS':
+            result = 'WIN'
+        else:
+            result = 'LOSS'
+    elif my_move == 'PAPER':
+        if their_move == 'ROCK':
+           result = 'WIN'
+        else:
+            result = 'LOSS'
+    elif my_move == 'SCISSORS':
+        if their_move == 'PAPER':
+            result = 'WIN'
+        else:
+            result = 'LOSS'
+    print(f"RESULT: {result} resulting in score of {score[result]}")
+    return score[result]
+
 if __name__ == "__main__":
     total_score = 0
     with open(input_file) as file:
@@ -20,25 +68,14 @@ if __name__ == "__main__":
             play = line.split()
             print(play)
             their_play = play[0]
-            expected_result = play[1]
+            my_play = play[1]
 
-            score = dict()
-            score['Z'] = 6
-            score['Y'] = 3
-            score['X'] = 0
+            play_score = PlayerMove[my_play].value
+            result_score = result(my_play, their_play)
 
-            result_score = score[expected_result]
-
-            if expected_result == 'Y':
-                play_score = PlayerMove[their_play].value
-            elif expected_result == 'X':
-                play_score = PlayerMove[their_play].value - 1
-                if play_score == 0: play_score = 3
-            elif expected_result == 'Z':
-                play_score = PlayerMove[their_play].value + 1
-                if play_score == 4: play_score = 1
-
-            round_score = result_score + play_score
+            round_score = play_score + result_score
+            print(f"This round score is {round_score}")
             total_score = total_score + round_score
-            print(f'Play Score = {play_score}; expected result score = {result_score}')
-            print(f'Running total score {total_score}')
+            print(f"Running total of the score {total_score}")
+    
+    print(f"Final total score {total_score}")
