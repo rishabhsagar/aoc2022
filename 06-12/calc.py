@@ -40,7 +40,6 @@ print('Part 1:')
 print(f"Test: {part1(test, test=True)}")
 print(f"Final: {part1(open(f'{folder}/input.txt', 'r'))}")
 
-
 print('\nPart 2:')
 print(f"Test: {part1(test, len_seq=14, test=True)}")
 print(f"Final: {part1(open(f'{folder}/input.txt', 'r'), len_seq=14)}")
