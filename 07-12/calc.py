@@ -1,8 +1,4 @@
-
-from email.policy import default
 import os
-from collections import defaultdict
-from turtle import update
 
 folder = os.path.dirname(os.path.realpath(__file__))
 test = '''$ cd /
@@ -81,8 +77,6 @@ def part1(inp):
                         
     compute_size(directories, all_sizes)
     return all_sizes[0]
-
-
 
 print('Part 1:')
 print(f"Test: {part1(test)}")
