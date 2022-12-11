@@ -1,0 +1,5 @@
+1. Store the tree map in a dict[row][col] structure
+2. For each tree to be analysed -> Implement search for the tallest tree in each dirction:
+	- Left: tree_map[tree_row][tree_col_0 -> tree_col -1]
+	- Down: tree_map[tree_row +1][tree_col]
+3. If max tree in any direction is higher than current tree length; then tree is visible.
