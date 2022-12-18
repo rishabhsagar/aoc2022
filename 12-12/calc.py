@@ -75,7 +75,6 @@ def shortest_path(graph, start, reverse=False):
                     break
     return distances
  
-    
 def part1(inp, one_start=True):
     graph, starts, end = load_graph(inp, one_start)
     distances = shortest_path(graph, starts[0])

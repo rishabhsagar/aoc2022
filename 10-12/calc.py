@@ -66,7 +66,6 @@ def part2(inp):
     for _ in crt:
         print('|' + ''.join(_) + '|')
 
-
 print('\nPart 2:')
 print(f"Test: {part2(open(f'{folder}/test.txt', 'r'))}")
 print(f"Final: {part2(open(f'{folder}/input.txt', 'r'))}")

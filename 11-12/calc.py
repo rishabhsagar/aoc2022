@@ -3,7 +3,6 @@ from dataclasses import dataclass, field
 from math import lcm 
 folder = os.path.dirname(os.path.realpath(__file__))
 
-
 @dataclass
 class Monkey:
     identifier: int
