@@ -61,7 +61,6 @@ class Cave:
         for y in range(self.coord_ranges['y'][0], self.coord_ranges['y'][1] + 1):
             print('\n', end='')
             for x in range(self.coord_ranges['x'][0], self.coord_ranges['x'][1] + 1):
-                # print(y, end='')
                 if (x, y) in self.paths:
                     print('#', end='')
                 elif (x, y) in self.obstacles:
@@ -79,7 +78,7 @@ class Cave:
         sand_position = tuple(self.sand_source)
         blocked = False
         former_sand_position = sand_position
-        # self.print_cave()
+        
         while not blocked:
             if sand_position in self.obstacles:
                 if sand_position == former_sand_position:
@@ -122,7 +121,6 @@ class Cave:
             n_grains += 1
         return n_grains
             
-
 def part1(inp):
     cave = Cave()
     cave.read_paths(inp)
@@ -132,7 +130,6 @@ def part2(inp):
     cave = Cave()
     cave.read_paths(inp)
     cave.add_floor()
-    print(cave.coord_ranges)
     return cave.simulate_sand()        
     
 print('~~Part 1~~')
